@@ -90,12 +90,16 @@ variable "plugins_s3_path" {
   default     = null
 }
 
-variable "requirements_s3_path" {
-  description = "(Optional) The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirements_s3_object_version is required."
+variable "requirements_s3_path"  {
+  description = "(Optional) The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then startup_script_s3_object_version is required."
   type        = string
   default     = null
 }
-
+variable "startup_script_s3_path" {
+  description = "(Optional) The relative path to the startup script file on your Amazon S3 storage bucket. For example, startup.sh. If a relative path is provided in the request, then _object_version is required."
+  type        = string
+  default     = null
+}
 variable "schedulers" {
   description = "(Optional) The number of schedulers that you want to run in your environment."
   type        = string
@@ -153,8 +157,8 @@ variable "force_detach_policies" {
 
 variable "iam_role_additional_policies" {
   description = "Additional policies to be added to the IAM role"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 
 variable "iam_role_path" {
@@ -228,7 +232,12 @@ variable "source_cidr" {
 }
 
 variable "requirements_s3_object_version" {
-  description = "Optional) The requirements.txt file version you want to use."
+  description = "(Optional) The requirements.txt file version you want to use."
+  type        = string
+  default     = null
+}
+variable "startup_script_s3_object_version" {
+  description = "(Optional) The version of the startup shell script you want to use. You must specify the version ID that Amazon S3 assigns to the file every time you update the script.."
   type        = string
   default     = null
 }

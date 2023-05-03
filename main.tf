@@ -17,7 +17,8 @@ resource "aws_mwaa_environment" "mwaa" {
   schedulers                     = var.schedulers
   execution_role_arn             = local.execution_role_arn
   airflow_configuration_options  = local.airflow_configuration_options
-
+  startup_script_s3_path         = var.startup_script_s3_path
+  startup_script_s3_object_version = var.startup_script_s3_object_version
   source_bucket_arn               = local.source_bucket_arn
   webserver_access_mode           = var.webserver_access_mode
   weekly_maintenance_window_start = var.weekly_maintenance_window_start
