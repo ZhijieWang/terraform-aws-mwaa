@@ -63,6 +63,9 @@ resource "aws_mwaa_environment" "mwaa" {
       requirements_s3_object_version
     ]
   }
+  timeouts {
+    create = var.create_timeout
+  }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------

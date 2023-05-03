@@ -241,3 +241,9 @@ variable "startup_script_s3_object_version" {
   type        = string
   default     = null
 }
+
+variable "create_timeout"{
+  descriptition = "(Optional) Customize the timeout value for MWAA Env create"
+  type = string
+  default = "120m"
+}
